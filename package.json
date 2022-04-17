@@ -1,0 +1,13 @@
+{
+  "name": "component-aggregator",
+  "packageManager": "yarn@3.2.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "ts-node src/index.ts",
+    "build": "tsc"
+  },
+  "dependencies": {
+    "@types/node": "^17.0.23",
+    "axios": "^0.26.1"
+  }
+}
