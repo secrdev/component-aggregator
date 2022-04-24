@@ -12,7 +12,7 @@ export default function fetchDeps(url: string) {
     });
     console.log("Dependencies:\n");
     for (const dep in res.data.dependencies) {
-      table1.push([dep, res.data.dependencies[dep].replace("^", "")]);
+      table1.push([dep, res.data.dependencies[dep]]);
     }
     console.log(table1.toString());
     console.log("\n");
@@ -22,9 +22,7 @@ export default function fetchDeps(url: string) {
     });
     console.log("Dev Dependencies:\n");
     for (const depDev in res.data.devDependencies) {
-      table2.push(
-        [depDev, res.data.devDependencies[depDev].replace("^", "")]
-      );
+      table2.push([depDev, res.data.devDependencies[depDev]]);
     }
     console.log(table2.toString());
   });
