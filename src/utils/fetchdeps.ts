@@ -5,7 +5,16 @@ export default function fetchDeps(url: string) {
     if (res.status !== 200) {
       throw new Error(`Failed to fetch ${url}`);
     }
-    console.log(res.data.dependencies);
-    console.log(res.data.devDependencies);
+    console.log("Dependencies:\n");
+    for (const dep in res.data.dependencies) {
+      console.log(`${dep}:${res.data.dependencies[dep].replace("^", "")}`);
+    }
+    console.log("\n");
+    console.log("Dev Dependencies:\n");
+    for (const depDev in res.data.devDependencies) {
+      console.log(
+        `${depDev}:${res.data.devDependencies[depDev].replace("^", "")}`
+      );
+    }
   });
 }

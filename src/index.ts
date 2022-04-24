@@ -1,5 +1,5 @@
 import fetchDeps from "./utils/fetchdeps";
 
 fetchDeps(
-  "https://raw.githubusercontent.com/Asana/node-asana/master/package.json"
+  `https://raw.githubusercontent.com/${process.argv[2]}/master/package.json`
 );
