@@ -3,10 +3,10 @@ const express = require("express");
 const app = express();
 const port = process.env.PORT || 3000;
 
-app.get("/repos", (req: any, response: any) => {
+app.get("/repos/:org/:repo", (req: any, response: any) => {
   axios
     .get(
-      `https://raw.githubusercontent.com/${req.query.org}/${req.query.repo}/master/package.json`
+      `https://raw.githubusercontent.com/${req.params.org}/${req.params.repo}/master/package.json`
     )
     .then((res) => {
       if (res.status !== 200) {
@@ -27,6 +27,9 @@ app.get("/repos", (req: any, response: any) => {
         });
       }
       response.send(dependencies.concat(devDependencies));
+    })
+    .catch((err) => {
+      response.status(500).send(err);
     });
 });
 
